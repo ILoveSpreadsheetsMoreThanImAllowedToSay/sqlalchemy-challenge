@@ -44,8 +44,8 @@ def starting():
         f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/stations<br/>"
         f"/api/v1.0/tobs<br/>"
-        f"/api/v1.0/start (date format: YYYY-MM-DD)<br/>"
-        f"/api/v1.0/start/end (date format: YYYY-MM-DD/YYYY-MM-DD)"
+        f"/api/v1.0/[start] (date format: YYYY-MM-DD)<br/>"
+        f"/api/v1.0/[start]/[end] (date format: YYYY-MM-DD/YYYY-MM-DD)"
 
     )
 
@@ -70,14 +70,14 @@ def precipitation():
 @app.route("/api/v1.0/stations")
 def stations():
     session = Session(engine)
-    selection = [station.station, station.name, station.latitude, station.longitude, station.elevation]
+    selection = [station.station    , station.name, station.latitude, station.longitude, station.elevation]
     query_result = session.query(*selection).all()
     session.close()
 
     stations = []
-    for station,name,lat,lng,elev in query_result:
+    for station_id,name,lat,lng,elev in query_result:
         station_dict = {}
-        station_dict["Station"] = station
+        station_dict["Station"] = station_id
         station_dict["Name"] = name
         station_dict["Lat"] = lat
         station_dict["Lng"] = lng
