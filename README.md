@@ -11,8 +11,13 @@ Specifically, SQLAlchemy ORM queries, Pandas, and Matplotlib are used.
 Part 2: Design Your Climate App
 A Flask API is designed based on the queries developed in part on1. 
 Flask is used to create the following routes:
+
 /api/v1.0/precipitation
+
 /api/v1.0/stations
+
 /api/v1.0/tobs
+
 /api/v1.0/start (date format: YYYY-MM-DD)
+
 /api/v1.0/start/end (date format: YYYY-MM-DD/YYYY-MM-DD)
